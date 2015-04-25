@@ -1,0 +1,25 @@
+{
+  "name": "Tomato-Service-Example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*",
+    "socket.io-client": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "body-parser": "*",
+    "serve-favicon": "*",
+    "morgan": "*",
+    "method-override": "*",
+    "express-session": "*",
+    "errorhandler": "*"
+  },
+  "engines": {
+    "node": "0.11.x",
+    "npm": "2.1.*"
+  }
+}
