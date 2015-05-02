@@ -1,0 +1,6 @@
+[submodule "tomato-service-client"]
+	path = tomato-service-client
+	url = https://github.com/wmin0/tomato-service-client.git
+[submodule "tomato-service"]
+	path = tomato-service
+	url = https://github.com/wmin0/tomato-service.git
