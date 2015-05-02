@@ -9,7 +9,7 @@ var express = require('express')
   , methodOverride = require('method-override')
   , session = require('express-session')
   , errorHandler = require('errorhandler')
-  , tomatoService = require('./tomato-service');
+  , tomatoService = require('tomato-service');
 
 var app = express()
   , server = http.createServer(app)

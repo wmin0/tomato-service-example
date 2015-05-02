@@ -3,8 +3,7 @@ require({
   paths: {
     "Order": "/lib/requirejs/order",
     "React": "/lib/react/react-with-addons",
-    "Socket": "/socket.io/socket.io",
-    "Tomato": "Tomato"
+    "Tomato": "/tomato"
   }
 });
 require(['ServiceTest/Main'], function(Test) {

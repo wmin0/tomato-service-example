@@ -1,7 +1,7 @@
 /* global define */
 define([
   "React",
-  "Tomato/Service"
+  "Tomato/service"
 ], function(
   React,
   Service
@@ -57,8 +57,8 @@ define([
   };
 
   var onTest6 = function(event) {
-    // Invalid Override Setter
-    Object.getOwnPropertyDescriptor(service, 'syncTest').set('update', function() {
+    // Set SyncData With Callback
+    Object.getOwnPropertyDescriptor(service, 'syncTest').set.call(service, 'update', function() {
       console.log('update resp', arguments);
     });
   };
@@ -89,7 +89,7 @@ define([
             <p>Test3: Test Server call Client</p>
             <p>Test4: Set SyncData</p>
             <p>Test5: Get SyncData Test</p>
-            <p>Test6: Invalid Override Setter</p>
+            <p>Test6: Set SyncData With Callback</p>
             <p>Test7: Destory</p>
           </div>
         </div>
