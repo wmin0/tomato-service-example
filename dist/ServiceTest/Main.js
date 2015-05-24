@@ -44,11 +44,18 @@ define([
   };
 
   var onTest4 = function(event) {
+    // Test Observe
+    service.observe(function(changes) {
+      console.log('observing', changes);
+    });
+  };
+
+  var onTest5 = function(event) {
     // Set SyncData
     service.syncTest = 'update';
   };
 
-  var onTest5 = function(event) {
+  var onTest6 = function(event) {
     // Get SyncData Test
     service.getSyncTest({}, function(data) {
       console.log('client syncTest', service.syncTest);
@@ -56,14 +63,14 @@ define([
     });
   };
 
-  var onTest6 = function(event) {
+  var onTest7 = function(event) {
     // Set SyncData With Callback
-    Object.getOwnPropertyDescriptor(service, 'syncTest').set.call(service, 'update', function() {
+    Service.setWithCallback(service, 'syncTest', 'update', function() {
       console.log('update resp', arguments);
     });
   };
 
-  var onTest7 = function(event) {
+  var onTest8 = function(event) {
     // Destory
     console.log('destroy service');
     service.destroy();
@@ -81,16 +88,18 @@ define([
             React.createElement("button", {ref: "btn4", onClick: onTest4}, "test4"), 
             React.createElement("button", {ref: "btn5", onClick: onTest5}, "test5"), 
             React.createElement("button", {ref: "btn6", onClick: onTest6}, "test6"), 
-            React.createElement("button", {ref: "btn7", onClick: onTest7}, "test7")
+            React.createElement("button", {ref: "btn7", onClick: onTest7}, "test7"), 
+            React.createElement("button", {ref: "btn8", onClick: onTest8}, "test8")
           ), 
           React.createElement("div", null, 
             React.createElement("p", null, "Test1: Test connection"), 
             React.createElement("p", null, "Test2: Test Server call"), 
             React.createElement("p", null, "Test3: Test Server call Client"), 
-            React.createElement("p", null, "Test4: Set SyncData"), 
-            React.createElement("p", null, "Test5: Get SyncData Test"), 
-            React.createElement("p", null, "Test6: Set SyncData With Callback"), 
-            React.createElement("p", null, "Test7: Destory")
+            React.createElement("p", null, "Test4: Test Observe"), 
+            React.createElement("p", null, "Test5: Set SyncData"), 
+            React.createElement("p", null, "Test6: Get SyncData Test"), 
+            React.createElement("p", null, "Test7: Set SyncData With Callback"), 
+            React.createElement("p", null, "Test8: Destory")
           )
         )
       );

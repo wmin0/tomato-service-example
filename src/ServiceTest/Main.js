@@ -44,11 +44,18 @@ define([
   };
 
   var onTest4 = function(event) {
+    // Test Observe
+    service.observe(function(changes) {
+      console.log('observing', changes);
+    });
+  };
+
+  var onTest5 = function(event) {
     // Set SyncData
     service.syncTest = 'update';
   };
 
-  var onTest5 = function(event) {
+  var onTest6 = function(event) {
     // Get SyncData Test
     service.getSyncTest({}, function(data) {
       console.log('client syncTest', service.syncTest);
@@ -56,14 +63,14 @@ define([
     });
   };
 
-  var onTest6 = function(event) {
+  var onTest7 = function(event) {
     // Set SyncData With Callback
-    Object.getOwnPropertyDescriptor(service, 'syncTest').set.call(service, 'update', function() {
+    Service.setWithCallback(service, 'syncTest', 'update', function() {
       console.log('update resp', arguments);
     });
   };
 
-  var onTest7 = function(event) {
+  var onTest8 = function(event) {
     // Destory
     console.log('destroy service');
     service.destroy();
@@ -82,15 +89,17 @@ define([
             <button ref='btn5' onClick={onTest5}>test5</button>
             <button ref='btn6' onClick={onTest6}>test6</button>
             <button ref='btn7' onClick={onTest7}>test7</button>
+            <button ref='btn8' onClick={onTest8}>test8</button>
           </div>
           <div>
             <p>Test1: Test connection</p>
             <p>Test2: Test Server call</p>
             <p>Test3: Test Server call Client</p>
-            <p>Test4: Set SyncData</p>
-            <p>Test5: Get SyncData Test</p>
-            <p>Test6: Set SyncData With Callback</p>
-            <p>Test7: Destory</p>
+            <p>Test4: Test Observe</p>
+            <p>Test5: Set SyncData</p>
+            <p>Test6: Get SyncData Test</p>
+            <p>Test7: Set SyncData With Callback</p>
+            <p>Test8: Destory</p>
           </div>
         </div>
       );
