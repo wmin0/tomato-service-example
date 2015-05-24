@@ -11,6 +11,9 @@ define([
   window.React = React;
 
   var service  = null;
+  var observeFunc = function(changes) {
+    console.log('observing', changes);
+  };
 
   var onTest1 = function(event) {
     // Test connection
@@ -45,9 +48,7 @@ define([
 
   var onTest4 = function(event) {
     // Test Observe
-    service.observe(function(changes) {
-      console.log('observing', changes);
-    });
+    service.observe(observeFunc);
   };
 
   var onTest5 = function(event) {
@@ -71,6 +72,11 @@ define([
   };
 
   var onTest8 = function(event) {
+    // Test Unobserve
+    service.unobserve(observeFunc);
+  };
+
+  var onTest9 = function(event) {
     // Destory
     console.log('destroy service');
     service.destroy();
@@ -89,7 +95,8 @@ define([
             React.createElement("button", {ref: "btn5", onClick: onTest5}, "test5"), 
             React.createElement("button", {ref: "btn6", onClick: onTest6}, "test6"), 
             React.createElement("button", {ref: "btn7", onClick: onTest7}, "test7"), 
-            React.createElement("button", {ref: "btn8", onClick: onTest8}, "test8")
+            React.createElement("button", {ref: "btn8", onClick: onTest8}, "test8"), 
+            React.createElement("button", {ref: "btn9", onClick: onTest9}, "test9")
           ), 
           React.createElement("div", null, 
             React.createElement("p", null, "Test1: Test connection"), 
@@ -99,7 +106,8 @@ define([
             React.createElement("p", null, "Test5: Set SyncData"), 
             React.createElement("p", null, "Test6: Get SyncData Test"), 
             React.createElement("p", null, "Test7: Set SyncData With Callback"), 
-            React.createElement("p", null, "Test8: Destory")
+            React.createElement("p", null, "Test8: Test Unobserve"), 
+            React.createElement("p", null, "Test9: Destory")
           )
         )
       );

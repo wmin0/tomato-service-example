@@ -11,6 +11,9 @@ define([
   window.React = React;
 
   var service  = null;
+  var observeFunc = function(changes) {
+    console.log('observing', changes);
+  };
 
   var onTest1 = function(event) {
     // Test connection
@@ -45,9 +48,8 @@ define([
 
   var onTest4 = function(event) {
     // Test Observe
-    service.observe(function(changes) {
-      console.log('observing', changes);
-    });
+    service.observe(observeFunc);
+    console.log('observe done');
   };
 
   var onTest5 = function(event) {
@@ -71,6 +73,12 @@ define([
   };
 
   var onTest8 = function(event) {
+    // Test Unobserve
+    service.unobserve(observeFunc);
+    console.log('unobserve done');
+  };
+
+  var onTest9 = function(event) {
     // Destory
     console.log('destroy service');
     service.destroy();
@@ -90,6 +98,7 @@ define([
             <button ref='btn6' onClick={onTest6}>test6</button>
             <button ref='btn7' onClick={onTest7}>test7</button>
             <button ref='btn8' onClick={onTest8}>test8</button>
+            <button ref='btn9' onClick={onTest9}>test9</button>
           </div>
           <div>
             <p>Test1: Test connection</p>
@@ -99,7 +108,8 @@ define([
             <p>Test5: Set SyncData</p>
             <p>Test6: Get SyncData Test</p>
             <p>Test7: Set SyncData With Callback</p>
-            <p>Test8: Destory</p>
+            <p>Test8: Test Unobserve</p>
+            <p>Test9: Destory</p>
           </div>
         </div>
       );
